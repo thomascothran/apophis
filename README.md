@@ -21,12 +21,11 @@ Extend apophis to test pull requests or commits. Plug in different mutations at 
 ```clojure
 (ns my.test.ns
   (:require [clojure.test :refer [deftest is run-all-tests]]
-            [tech.thomascothran.apophis :as a]
-            [my.test.stuff :as stuff])
+            [tech.thomascothran.apophis :as a]))
 
 (deftest test-my-fn
   (is (empty? (a/survivors run-all-tests
-                           [:fn #'stuff/my-fn]))
+                           [:fn 'my.test.stuff/my-fn]))
       "Should be no survivors"))
 ```
 
