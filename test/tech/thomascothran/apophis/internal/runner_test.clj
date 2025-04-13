@@ -9,6 +9,7 @@
 (def testable-fn
   {:form '(defn testable-fn [a b]
             (if a public-map b))
+   :symbol 'tech.thomascothran.apophis.impl-test.testns/testable-fn
    :namespace
    (find-ns 'tech.thomascothran.apophis.impl-test.testns)})
 
@@ -22,6 +23,9 @@
 (deftest test-return-results
   (is (= [{:fail 0,
            :mutation '(defn testable-fn [a b] (clojure.core/if-not a public-map b)),
+           :original-form '(defn testable-fn [a b] (if a public-map b))
+           :ns 'tech.thomascothran.apophis.impl-test.testns
+           :symbol 'tech.thomascothran.apophis.impl-test.testns/testable-fn
            :pass 1
            :test 1}]
          (r/run-fn-all test-fn
